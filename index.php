@@ -1,4 +1,12 @@
 <?php
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit;
+}
+?>
+
+<?php
 include 'includes/config.php';
 
 $result = mysqli_query($conn, "SELECT * FROM product");
