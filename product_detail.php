@@ -44,7 +44,7 @@ if (isset($_GET['id'])) {
     <img src="uploads/<?php echo htmlspecialchars($product['pimg']); ?>" alt="<?php echo htmlspecialchars($product['pname']); ?>" />
     <div class="info">
       <h2><?php echo htmlspecialchars($product['pname']); ?></h2>
-      <p><strong>Price:</strong> $<?php echo htmlspecialchars($product['pprice']); ?></p>
+      <p><strong>Price:</strong> Rs.<?php echo htmlspecialchars($product['pprice']); ?></p>
       <p><?php echo htmlspecialchars($product['pdesc']); ?></p>
       <form action="cart.php" method="POST">
         <input type="hidden" name="pid" value="<?php echo $product['pid']; ?>">
