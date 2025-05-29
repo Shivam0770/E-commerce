@@ -51,7 +51,11 @@ $result = mysqli_query($conn, "SELECT * FROM product");
   <main class="product-list">
     <?php while($row = mysqli_fetch_assoc($result)) { ?>
       <div class="product">
-        <img src="uploads/<?php echo htmlspecialchars($row['pimg']); ?>" alt="<?php echo htmlspecialchars($row['pname']); ?>" />
+        <?php
+          $imageList = explode(',', $row['pimg']);
+          $firstImage = trim($imageList[0]);
+        ?>
+        <img src="uploads/<?php echo htmlspecialchars($firstImage); ?>" alt="<?php echo htmlspecialchars($row['pname']); ?>" />
         <h3><?php echo htmlspecialchars($row['pname']); ?></h3>
         <p>Rs.<?php echo htmlspecialchars($row['pprice']); ?></p>
         <a href="product_detail.php?id=<?php echo urlencode($row['pid']); ?>">View Details</a>

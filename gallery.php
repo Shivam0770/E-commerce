@@ -91,18 +91,6 @@
       object-fit: cover;
       border-radius: 8px;
     }
-
-    .product h3 {
-      font-size: 1.2rem;
-      margin: 0.5rem 0;
-      color: #333;
-    }
-
-    .product p {
-      color: #4CAF50;
-      font-weight: bold;
-      font-size: 1rem;
-    }
   </style>
 </head>
 <body>
@@ -124,12 +112,14 @@
     <?php
     include 'includes/config.php';
     $result = mysqli_query($conn, "SELECT * FROM product");
-    while($row = mysqli_fetch_assoc($result)) {
-      echo "<div class='product'>
-              <img src='uploads/{$row['pimg']}' alt='{$row['pname']}' />
-              <h3>{$row['pname']}</h3>
-              <p>\${$row['pprice']}</p>
-            </div>";
+    while ($row = mysqli_fetch_assoc($result)) {
+      $images = explode(',', $row['pimg']);
+      foreach ($images as $img) {
+        $img = trim($img);
+        echo "<div class='product'>
+                <img src='uploads/{$img}' alt='Artwork' />
+              </div>";
+      }
     }
     ?>
   </main>
